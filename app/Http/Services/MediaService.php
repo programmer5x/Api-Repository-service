@@ -34,21 +34,15 @@ class MediaService
 
     public function update($product, $request)
     {
-        if ($request->file('images')) {
             if ($request->delete) {
-                foreach ($request->delete as $item) {
-                }
+                $item = $request->delete;
             }
+        if ($request->file('images')) {
             foreach ($request->file('images') as $image) {
                 $image_name = rand(1, 99) . '-' . time() . '.' . $image->extension();
                 $image->storeAs('images', $image_name);
-                $media[] =
-                    [
-                        'images' => $image_name,
-                        'product_id' => $product->id,
-                    ];
+                $this->mediaRepository->update($image_name, $product->id, $item);
             }
-            $this->mediaRepository->update($media, $item);
         }
     }
 }
