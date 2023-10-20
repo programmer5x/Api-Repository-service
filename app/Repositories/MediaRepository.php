@@ -17,7 +17,6 @@ class MediaRepository implements MediaRepositoryInterface
         $object = new Media();
         $object->update([
             'images' => $image_name,
-            'product_id' => $product
         ]);
             $object->where('id', $item)->delete();
     }

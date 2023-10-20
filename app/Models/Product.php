@@ -18,7 +18,6 @@ class Product extends Model
             'price',
             'user_id',
             'category_id',
-            'product_id'
         ];
 
     public function category()
@@ -34,5 +33,10 @@ class Product extends Model
     public function media()
     {
         return $this->hasMany(Media::class);
+    }
+
+    public function card()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

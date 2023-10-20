@@ -9,13 +9,13 @@ use App\Repositories\MediaRepository;
 
 class MediaService
 {
-    private $mediaRepository;
-    private $productRepository;
+    protected MediaRepositoryInterface $mediaRepository;
+    protected ProductRepositoryInterface $productRepository;
 
-    public function __construct(MediaRepositoryInterface $mediaRepository, ProductRepositoryInterface $productRepository)
+    public function __construct()
     {
-        $this->mediaRepository = $mediaRepository;
-        $this->productRepository = $productRepository;
+        $this->mediaRepository = app()->make(MediaRepositoryInterface::class);
+        $this->productRepository = app()->make(ProductRepositoryInterface::class);
     }
 
 
@@ -26,7 +26,7 @@ class MediaService
             $media[] =
                 [
                     'images' => $image_name,
-                    'product_id' => $request->product_id
+                    'product_id' => $product->id
                 ];
             $this->mediaRepository->store($media);
         }
