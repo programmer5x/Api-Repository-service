@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('images');
             $table->foreignId('product_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

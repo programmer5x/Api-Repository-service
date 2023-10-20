@@ -26,7 +26,6 @@ class UpdateProductRequest extends FormRequest
             'body' => 'required',
             'images' => 'required',
             'category_id' => 'required|numeric',
-            'product_id' => 'required|numeric',
             'delete' => 'required'
         ];
     }

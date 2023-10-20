@@ -20,8 +20,4 @@ class ProductService
         return $this->productRepository->store($product);
     }
 
-
-    public function update($request)
-    {
-    }
 }

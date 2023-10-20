@@ -6,5 +6,5 @@ interface MediaRepositoryInterface
 {
     public function store($media);
 
-    public function update($media, $id);
+    public function update($media, $item);
 }

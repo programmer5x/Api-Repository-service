@@ -36,7 +36,7 @@ class ProductController extends Controller
     }
 
 
-    public function store(StoreProductRequest $request, Product $product)
+    public function store(StoreProductRequest $request)
     {
         $product = $this->productRepository->store($request);
         $this->mediaService->store($product, $request );
@@ -57,8 +57,8 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, int $id)
     {
-        $this->productService->update($request);
-        $this->productRepository->update($request, $id);
+        $product = $this->productRepository->update($request, $id);
+        $this->mediaService->update($product, $request);
     }
 
 

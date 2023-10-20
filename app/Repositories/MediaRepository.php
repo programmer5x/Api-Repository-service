@@ -12,10 +12,10 @@ class MediaRepository implements MediaRepositoryInterface
         Media::insert($media);
     }
 
-    public function update($media, $id)
+    public function update($media, $item)
     {
         $object = new Media();
         $object->insert($media);
-        Media::find($id)->delete();
+        $object->where('product_id', $item)->delete();
     }
 }
