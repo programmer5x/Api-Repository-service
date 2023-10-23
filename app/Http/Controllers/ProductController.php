@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        return $this->productRepository->all();
+        return $this->productRepository->getProductsByFilter();
     }
 
 

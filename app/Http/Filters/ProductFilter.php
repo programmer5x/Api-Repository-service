@@ -6,12 +6,12 @@ use App\Models\Product;
 
 class ProductFilter
 {
-    private mixed $queryParams;
-    private mixed $query;
-    private ?int $page;
-    private ?string $q;
-    private int $per_page;
-    private int $status;
+    private $queryParams;
+    private $query;
+    private $page;
+    private $q;
+    private $per_page;
+    private $status;
 
     private $searchKey;
     private $name;
@@ -56,16 +56,15 @@ class ProductFilter
         $this->name = $this->extractKeyByKeyName('name');
     }
 
-    private function extractPrice()
+    private function extractMinPrice()
     {
-        $this->price = $this->extractKeyByKeyName('price');
+        $this->minPrice = $this->extractKeyByKeyName('minPrice');
     }
 
-    private function extractResult()
+    private function extractMaxPrice()
     {
-
+        $this->maxPrice = $this->extractKeyByKeyName('maxPrice');
     }
-
 
     private function createQuery()
     {
@@ -92,11 +91,17 @@ class ProductFilter
     {
         $this->extractName();
         $this->extractPage();
-        $this->extractPrice();
-        $this->extractResult();
+        $this->extractMinPrice();
+        $this->extractMaxPrice();
         $this->extractSearchKey();
         $this->extractPage();
+        $this->extractStatus();
         $this->createQuery();
         $this->fetchData();
+    }
+
+    public function getResult()
+    {
+        return $this->result;
     }
 }

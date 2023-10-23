@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('body');
             $table->boolean('isMain')->default(0);
             $table->integer('price');
+            $table->boolean('status')->default(0);
             $table->foreignId('category_id');
             $table->foreignId('user_id');
             $table->softDeletes();

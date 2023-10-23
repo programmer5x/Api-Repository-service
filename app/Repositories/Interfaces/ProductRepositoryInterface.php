@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Request;
 
 interface ProductRepositoryInterface
 {
+    public function getProductsByFilter();
     public function all();
 
     public function find(int $id);

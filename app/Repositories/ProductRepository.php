@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Filters\ProductFilter;
 use App\Http\Resources\ProductResource;
 use App\Models\Media;
 use App\Models\Product;
@@ -10,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductRepository implements ProductRepositoryInterface
 {
+    public function getProductsByFilter()
+    {
+        return (new ProductFilter(request()->query(), 3))->getResult();
+    }
+
     public function all()
     {
         return ProductResource::collection(Product::with('user')->get());
@@ -53,4 +59,5 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return $this->find($id)->delete();
     }
+
 }
