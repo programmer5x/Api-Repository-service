@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class CategoryFactory extends Factory
         return [
             'name'      => $this->faker->name(),
             'parent_id' => $this->faker->numberBetween(1,25),
+            'user_id' => User::factory(),
         ];
     }
 }
