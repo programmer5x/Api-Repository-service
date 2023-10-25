@@ -12,20 +12,21 @@ class RoomTest extends TestCase
      */
     public function test_room_has(): void
     {
-        $room = new Room(["hassan","mahdi","ali","mohsen"]);
-        $this->assertFalse($room->has("mohammad"));
+        $room = new Room(['jack', 'alex', 'david']);
+        $this->assertTrue($room->has('jack'));
+        $this->assertFalse($room->has('omid'));
     }
 
     public function test_room_add()
     {
         $room = new Room(['jack']);
-        $room->add('peter');
-        $this->assertContains("jack",$room->add("jack"));
+        $this->assertContains('peter',$room->add('peter'));
     }
 
     public function test_room_remove()
     {
-        $room = new Room(['jack','matola','sogoli']);
-        $this->assertCount(2, $room->remove('jack'));
+        $room = new Room(['jack','peter']);
+        $this->assertCount(1,$room->remove('peter'));
     }
+
 }
