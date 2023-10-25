@@ -20,7 +20,7 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => 'api',
+    'middleware' => ['api','auth'],
 ], function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/product', ProductController::class);
