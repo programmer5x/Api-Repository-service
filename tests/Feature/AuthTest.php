@@ -39,7 +39,7 @@ class AuthTest extends TestCase
     public function test_user_login_get()
     {
         $user = User::factory()->make();
-        dd($user);
+//        dd($user);
         $response = $this->actingAs($user)->getJson('/api/auth/login');
         $response->assertStatus(200);
         $response = $this->actingAs($user)->get('/login');
